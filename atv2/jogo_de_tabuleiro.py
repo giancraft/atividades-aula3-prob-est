@@ -1,10 +1,6 @@
 import random
 
 class FilaCircular:
-    """
-    Implementa uma fila circular para representar as casas do tabuleiro.
-    As casas são armazenadas em uma lista, e a rotação é feita de forma circular.
-    """
     def __init__(self, tamanho):
         self.tamanho = tamanho
         self.fila = list(range(1, tamanho + 1))
@@ -31,17 +27,15 @@ def jogo_tabuleiro():
     tabuleiro = FilaCircular(num_casas)
     print("Tabuleiro:", tabuleiro)
     
-    posicao_atual = 0  # Começamos na primeira casa (índice 0)
+    posicao_atual = 0  
     
     while True:
         input("\nPressione Enter para rolar o dado...")
         dado = random.randint(1, 6)
         print(f"Você rolou: {dado}")
         
-        # Calcula a nova posição
         nova_posicao = posicao_atual + dado
         
-        # Se a nova posição for maior ou igual à última casa, posiciona o jogador na última casa
         if nova_posicao >= num_casas - 1:
             posicao_atual = num_casas - 1
             casa_atual = tabuleiro[posicao_atual]
@@ -51,7 +45,6 @@ def jogo_tabuleiro():
             casa_atual = tabuleiro[posicao_atual]
             print(f"Você avançou para a casa {casa_atual}.")
 
-        # Se o jogador alcançar a última casa, realizar o teste final
         if posicao_atual == num_casas - 1:
             input("Você chegou na última casa! Pressione Enter para tentar vencer...")
             final_dado = random.randint(1, 6)
